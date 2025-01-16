@@ -1,23 +1,46 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { removeUser } from "../utils/userSlice";
+import axios from "axios";
 
 
 const Navbar = () => {
   const selc=useSelector(store=>store.user);
   console.log(selc);
+  const navigate=useNavigate();
+  const dispatch =useDispatch();
+
+
+  const logoutUser=async(e)=>{
+    try {
+      e.preventDefault();
+  
+      await axios.post("http://localhost:3000/user/logout",{WithCredentials:true});
+  
+      dispatch(removeUser());
+      navigate("/login")
+  
+    } catch (error) {
+      console.log(error.message);
+      
+    }
+  }
+
+  const data= selc.data ? "/" :"/login";
   
   return (
     <div className="navbar bg-base-300">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl">DevTinder</a>
+    <Link to={data} className="btn btn-ghost text-xl">DevTinder</Link>
   </div>
   <div className="flex-none gap-2">
     <div className="form-control">
     {selc.data && <p>Welcome : {selc?.data?.firstName}</p>}
     </div>
-    <div className="dropdown dropdown-end">
+    {selc.data && <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img
+          selc.data&& <img
             alt="Tailwind CSS Navbar component"
             src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         </div>
@@ -26,15 +49,15 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>
-          <a className="justify-between">
+          <Link to="/profile" className="justify-between">
             Profile
             <span className="badge">New</span>
-          </a>
+          </Link>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li onClick={logoutUser}><a>Logout</a></li>
       </ul>
-    </div>
+    </div>}
   </div>
 </div>
   )
