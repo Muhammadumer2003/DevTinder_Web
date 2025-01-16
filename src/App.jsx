@@ -3,11 +3,14 @@ import Login from "./Login"
 import Connections from "./Connections"
 import Profile from "./Profile"
 import Body from "./Body"
+import { Provider } from "react-redux"
+import store from "./utils/appStore"
 
 function App() {
 
 
   return (
+    <Provider store={store}>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Body/>}>
@@ -19,6 +22,7 @@ function App() {
     
     
     </BrowserRouter>
+    </Provider>
   )
 }
 
