@@ -11,11 +11,11 @@ const Navbar = () => {
   const dispatch =useDispatch();
 
 
-  const logoutUser=async(e)=>{
+  const logoutUser=async()=>{
     try {
-      e.preventDefault();
+     
   
-      await axios.post("http://localhost:3000/user/logout",{WithCredentials:true});
+      await axios.post("http://localhost:3000/user/logout",{},{withCredentials:true});
   
       dispatch(removeUser());
       navigate("/login")
@@ -26,7 +26,7 @@ const Navbar = () => {
     }
   }
 
-  const data= selc.data ? "/" :"/login";
+  const data= selc?.data ? "/" :"/login";
   
   return (
     <div className="navbar bg-base-300">
@@ -35,9 +35,9 @@ const Navbar = () => {
   </div>
   <div className="flex-none gap-2">
     <div className="form-control">
-    {selc.data && <p>Welcome : {selc?.data?.firstName}</p>}
+    {selc?.data && <p>Welcome : {selc?.data?.firstName}</p>}
     </div>
-    {selc.data && <div className="dropdown dropdown-end">
+    {selc?.data && <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           selc.data&& <img
@@ -55,7 +55,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li><a>Settings</a></li>
-        <li onClick={logoutUser}><a>Logout</a></li>
+        <li><a  onClick={logoutUser}>Logout</a></li>
       </ul>
     </div>}
   </div>

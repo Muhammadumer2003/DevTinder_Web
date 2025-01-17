@@ -59,7 +59,7 @@ const Login = () => {
     
   </div>
   <input type="text"
-  value={lastName} 
+  value={lastName}  
   placeholder="Type here" 
   className="input input-bordered w-full max-w-xs" 
   onChange={(e)=>setLName(e.target.value)}/>

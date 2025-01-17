@@ -2,7 +2,7 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
-import { useDispatch } from "react-redux"
+import { useDispatch,useSelector } from "react-redux"
 import axios from "axios";
 import { addUser } from "../utils/userSlice";
 
@@ -12,7 +12,8 @@ const Body = () => {
   const dispatch= useDispatch();
   const navigate=useNavigate();
 
-  // const sele=useSelector(store=>store.user);
+  // eslint-disable-next-line no-unused-vars
+  const sele=useSelector(store=>store.user);
   const fetchUsers=async()=>{
     
    try {
@@ -34,8 +35,11 @@ const Body = () => {
 
   useEffect(()=>{
 
-
+ 
       fetchUsers();
+
+    
+     
 
   
     
