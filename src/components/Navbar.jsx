@@ -40,9 +40,9 @@ const Navbar = () => {
     {selc?.data && <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          selc.data&& <img
+          <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src="https://avatars.githubusercontent.com/u/151808307?v=4" />
         </div>
       </div>
       <ul
