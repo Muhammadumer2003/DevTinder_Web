@@ -8,8 +8,8 @@ const PendingRequest=createSlice({
             // Extract the serializable data
            return action.payload;
         },
-        removePendingRequest:()=>{
-            return null;
+        removePendingRequest:(state,action)=>{
+            return state.filter(e=>e._id!==action.payload);
         }
     }
 });

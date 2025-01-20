@@ -8,18 +8,13 @@ const feedSlice=createSlice({
         addFeed: (state, action) => {
             // Extract the serializable data
             // eslint-disable-next-line no-unused-vars
-            const { data, headers } = action.payload;
-            return {
-                ...state,
-                data,
-                headers: {
-                    // contentLength: headers['content-length'], // Example of extracting specific header
-                    // contentType: headers['content-type'],
-                },
-            };
+           
+         
+                return action.payload
         },
-        removeFeed:()=>{
-            return null
+        removeFeed:(state,action)=>{
+            const newArray= state.filter( (e)=> (e._id!=action.payload));
+            return newArray;
         }
     }
 });

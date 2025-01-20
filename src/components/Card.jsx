@@ -1,7 +1,23 @@
 /* eslint-disable react/prop-types */
 
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { removeFeed } from "../utils/feedSlice";
 
-const Card = ({firstName, lastName,age,gender}) => {
+
+const Card = ({id,firstName, lastName,age,gender}) => {
+  const dispatch=useDispatch();
+
+  const handleClick=async(status,id)=>{
+    try {
+      await axios.post("http://localhost:3000/user/request/"+status+"/"+id,{},{withCredentials:true});
+      dispatch(removeFeed(id));
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+  }
     
   return (
     <div className="card bg-base-300 w-96 shadow-xl">
@@ -18,8 +34,10 @@ const Card = ({firstName, lastName,age,gender}) => {
         </div>
      
       <div className="card-actions justify-center gap-5 mt-4">
-        <button className="btn btn-primary">Ignore</button>
-        <button className="btn btn-secondary">Interested</button>
+        <button className="btn btn-primary"
+        onClick={()=>handleClick('notinterested',id)}>Ignore</button>
+        <button className="btn btn-secondary"
+         onClick={()=>handleClick('interested',id)}>Interested</button>
       </div>
     </div>
   </div>

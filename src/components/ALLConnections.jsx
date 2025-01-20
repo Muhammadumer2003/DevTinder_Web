@@ -4,7 +4,7 @@ import axios from "axios";
 import { addConnections } from "../utils/Connecitons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import RequestCard from "./RequestCard";
+// import RequestCard from "./RequestCard";
 
 
 const ALLConnections = () => {
@@ -38,7 +38,7 @@ const ALLConnections = () => {
     {
         selector && selector.map((row)=>{
             const {firstName,lastName,age,gender}=row;
-              return(<div className="card card-side bg-base-300 shadow-xl mt-5" >
+              return (<div className="card card-side bg-base-300 shadow-xl mt-5" >
   <figure>
     <img
       src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"

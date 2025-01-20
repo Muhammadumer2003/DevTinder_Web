@@ -7,8 +7,8 @@ const ConnectionsSlice=createSlice({
         addConnections:(state,action)=>{
             return action.payload;
         },
-        removeConnections:()=>{
-            return null;
+        removeConnections:(state,action)=>{
+            return state.filter(e=>e._id!==action.payload);
         }
 
     }
