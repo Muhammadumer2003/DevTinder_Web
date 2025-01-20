@@ -30,11 +30,16 @@ const Feed = () => {
     fetchUser();
   },[])
 
-  return userprop && (
+
+ 
+
+  return userprop.length>0 ? (
     <div className="flex justify-center my-14 gap-3">
-        <Card  firstName={userprop[0].firstName} lastName={userprop[0].lastName} age={userprop[0].age} gender={userprop[0].gender}/>
+        <Card  firstName={userprop[0]?.firstName} lastName={userprop[0]?.lastName} age={userprop[0]?.age} gender={userprop[0]?.gender}/>
       
     </div>
+  ): (
+    <div ><h1 className="text-center text-3xl font-semibold my-8" >No users to show.</h1></div>
   )
 }
 

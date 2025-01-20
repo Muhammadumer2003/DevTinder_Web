@@ -14,9 +14,12 @@ const Profile = () => {
   const user=sele;
 
   const [firstName,setfirstName]=useState(user?.data?.firstName)
+  const [lastName,setlastName]=useState(user?.data?.lastName)
   const [age,setAge]=useState(user?.data?.age)
   const [gender,setGender]=useState(user?.data?.gender)
-  const [lastName,setlastName]=useState(user?.data?.lastName)
+
+  const [Apicall,setApiCall]=useState(false);
+ 
 
 
   const dispatch= useDispatch();
@@ -31,18 +34,34 @@ const Profile = () => {
     },{withCredentials:true});
     console.log(users);
     dispatch(addFeed(users?.data));
+    setApiCall(true);
+    setTimeout(() => {
+      setApiCall(false);
+    }, 3000);
+    
+    
+  
 
   }
 
   const userprop=sele?.data;
 
 
-  useEffect(()=>{
-    fetchUser();
-  },[])
+  // useEffect(()=>{
+  //   fetchUser();
+  // },[])
 
   return (
     <div className=" flex justify-center my-6 gap-10">
+
+{Apicall && <div className="toast toast-top toast-center">
+  <div className="alert alert-info">
+    <span>New mail arrived.</span>
+  </div>
+  <div className="alert alert-success">
+    <span>Message sent successfully.</span>
+  </div>
+</div>}
 
 <div className="flex justify-center my-14 w-96">
         <div className="card bg-base-300 w-96 shadow-xl">
@@ -70,6 +89,8 @@ const Profile = () => {
     
   </div>
   <input type="text"
+  value={lastName}
+  onChange={(e)=>setlastName(e.target.value)}
 
   placeholder="Type here" 
   className="input input-bordered w-full max-w-xs" 
@@ -80,9 +101,11 @@ const Profile = () => {
 <label className="form-control w-full max-w-xs">
   <div className="label">
     <span className="label-text">Age</span>
-    
+   
   </div>
   <input type="text"
+   value={age}
+   onChange={(e)=>setAge(e.target.value)}
 
   placeholder="Type here" 
   className="input input-bordered w-full max-w-xs" 
@@ -97,7 +120,8 @@ const Profile = () => {
     
   </div>
   <input type="text"
-
+   value={gender}
+   onChange={(e)=>setGender(e.target.value)}
   placeholder="Type here" 
   className="input input-bordered w-full max-w-xs" 
   />
@@ -111,7 +135,9 @@ const Profile = () => {
 
       <div className="card-actions justify-center mt-4">
         <button className="btn btn-primary"
-       >Login</button>
+
+        onClick={()=>fetchUser()}
+       >Update</button>
       </div>
     </div>
 </div>
