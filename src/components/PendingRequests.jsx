@@ -14,7 +14,7 @@ const PendingRequests = () => {
 
     const fetchPendingRequests = async () => {
        try {
-         const response = await axios.get("http://localhost/api/user/getPendingRequests", {withCredentials: true});
+         const response = await axios.get("/api/user/getPendingRequests", {withCredentials: true});
          const sanitizedData = response?.data?.data?.pendingRequests.map((request) => ({
             _id: request?._id,
             sender: request?.sender,

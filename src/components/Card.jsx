@@ -10,7 +10,7 @@ const Card = ({id,firstName, lastName,age,gender}) => {
 
   const handleClick=async(status,id)=>{
     try {
-      await axios.post("http://localhost/api/user/request/"+status+"/"+id,{},{withCredentials:true});
+      await axios.post("/api/user/request/"+status+"/"+id,{},{withCredentials:true});
       dispatch(removeFeed(id));
     } catch (error) {
       console.log(error);
