@@ -23,7 +23,7 @@ const Login = () => {
   const handleSubmit = async () => {
     console.log("click");
     try {
-      const res = await axios.post('http://localhost:3000/user/login', {
+      const res = await axios.post('/api/user/login', {
         firstName,
         lastName,
         password
