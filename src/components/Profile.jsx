@@ -27,7 +27,7 @@ const Profile = () => {
 
   const fetchUser=async()=>{
 
-    const users=await axios.patch('http://localhost:3000/user/profile/edit',{
+    const users=await axios.patch('http://localhost/api/user/profile/edit',{
       firstName,
       lastName,
       age

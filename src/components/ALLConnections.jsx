@@ -15,7 +15,7 @@ const ALLConnections = () => {
     // eslint-disable-next-line no-unused-vars
     const fetchConnections=async()=>{
         try {
-            const connections= await axios.get("http://localhost:3000/user/getallconnections",{withCredentials:true});
+            const connections= await axios.get("http://localhost/api/user/getallconnections",{withCredentials:true});
             console.log(connections);
             dispatch(addConnections(connections?.data?.data));
 

@@ -41,7 +41,7 @@ const Login = () => {
 
   const handleSubmit1 = async () => {
     try {
-      const res = await axios.post('http://localhost:3000/user/signup', {
+      const res = await axios.post('http://localhost/api/user/signup', {
         firstName,
         lastName,
         password,

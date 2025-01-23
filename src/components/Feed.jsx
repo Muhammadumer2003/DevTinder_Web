@@ -11,7 +11,7 @@ const Feed = () => {
   const selc = useSelector((store) => store.feed);
 
   const fetchUser = async () => {
-    const users = await axios.get("http://localhost:3000/user/feed", {
+    const users = await axios.get("http://localhost/api/user/feed", {
       withCredentials: true,
     });
     console.log(users?.data);
