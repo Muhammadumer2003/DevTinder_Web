@@ -15,7 +15,7 @@ const Navbar = () => {
     try {
      
   
-      await axios.post("/api/user/logout",{},{withCredentials:true});
+      await axios.post("http://localhost:3000/user/logout",{},{withCredentials:true});
   
       dispatch(removeUser());
       navigate("/login")
@@ -48,15 +48,15 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
+       { selc&&<li>
           <Link to="/profile" className="justify-between">
             Profile
             <span className="badge">New</span>
           </Link>
-        </li>
-        <li><Link to={"/connections"}>Connecitons</Link></li>
-        <li><Link to={"/pending-req"}>Pending Requests</Link></li>
-        <li><a  onClick={logoutUser}>Logout</a></li>
+        </li>}
+        {selc&&<li><Link to={"/connections"}>Connecitons</Link></li>}
+       { selc&&<li><Link to={"/pending-req"}>Pending Requests</Link></li>}
+        {selc&&<li><a  onClick={logoutUser}>Logout</a></li>}
       </ul>
     </div>}
   </div>

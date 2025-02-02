@@ -4,6 +4,7 @@ import axios from "axios";
 import { addConnections } from "../utils/Connecitons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // import RequestCard from "./RequestCard";
 
 
@@ -12,10 +13,11 @@ const ALLConnections = () => {
     const dispatch=useDispatch();
     // eslint-disable-next-line no-unused-vars
     const selector=useSelector(store=>store.connections);
+    const navigate=useNavigate();
     // eslint-disable-next-line no-unused-vars
     const fetchConnections=async()=>{
         try {
-            const connections= await axios.get("/api/user/getallconnections",{withCredentials:true});
+            const connections= await axios.get("http://localhost:3000/user/getallconnections",{withCredentials:true});
             console.log(connections);
             dispatch(addConnections(connections?.data?.data));
 
@@ -49,6 +51,12 @@ const ALLConnections = () => {
     {age && gender && <p>{age} , {gender} </p>}
    
   </div>
+   <div className="card-actions gap-5 m-4">
+        
+        <button className="btn btn-secondary"
+         onClick={() => navigate(`/chat/${row._id}`)}>Chat
+         </button>
+      </div>
 </div>)
         })
     }

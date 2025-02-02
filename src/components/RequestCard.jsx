@@ -14,7 +14,7 @@ const RequestCard = ({firstName,lastName,age,gender,id,btl,setBTL}) => {
     const handleClick=async()=>{
       
        try {
-         const stat= await axios.post("/api/user/request/review/"+status+"/"+id,{},{withCredentials:true});
+         const stat= await axios.post("http://localhost:3000/user/request/review/"+status+"/"+id,{},{withCredentials:true});
          console.log(stat);
          setBTL(false);
        } catch (error) {
@@ -25,7 +25,7 @@ const RequestCard = ({firstName,lastName,age,gender,id,btl,setBTL}) => {
     const handleClick1=async()=>{
       
        try {
-         const sta1t= await axios.post("/api/user/request/review/"+statusIn+"/"+id,{},{withCredentials:true});
+         const sta1t= await axios.post("http://localhost:3000/user/request/review/"+statusIn+"/"+id,{},{withCredentials:true});
          console.log(sta1t);
          setBTL(false);
        } catch (error) {
@@ -44,7 +44,7 @@ const RequestCard = ({firstName,lastName,age,gender,id,btl,setBTL}) => {
     <h2 className="card-title">{firstName} {lastName}</h2>
     {age && gender && <p>{age} , {gender} </p>}
     <div className="card-actions justify-end">
-      <button className="btn btn-primary"
+      <button className="btn btn-secondary"
       onClick={()=>handleClick()}>Accept</button>
       <button className="btn btn-primary"
       onClick={()=>handleClick1()}>Reject</button>

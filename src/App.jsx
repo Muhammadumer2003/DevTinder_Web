@@ -8,6 +8,7 @@ import store from "./utils/appStore"
 import Feed from "./components/Feed"
 import ALLConnections from "./components/ALLConnections"
 import PendingRequests from "./components/PendingRequests"
+import Chat from "./components/Chat"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/feed" element={<Feed/>}/>
         <Route path="/connections" element={<ALLConnections/>}/>
         <Route path="/pending-req" element={<PendingRequests/>}/>
+        <Route path="/chat/:targetUserId" element={<Chat/>}/>
       </Route>
     </Routes>
     

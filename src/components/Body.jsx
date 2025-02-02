@@ -18,7 +18,7 @@ const Body = () => {
     
    try {
     
-     const user=await axios.get("/api/user/profile/view",{withCredentials:true});
+     const user=await axios.get("http://localhost:3000/user/profile/view",{withCredentials:true});
      console.log(user);
      dispatch(addUser(user));
    } catch (error) {
